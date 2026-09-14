@@ -28,6 +28,18 @@ export default function ProjectCard({ id, title, description, techStack, image, 
       )}
 
       <div className="project-card-actions">
+        {link && (
+          <a 
+            href={link} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="external-link-icon-btn" 
+            title="View Project Link"
+            aria-label="View external project link"
+          >
+            🔗
+          </a>
+        )}
         <button 
           onClick={toggleDetails} 
           className="details-toggle-btn"

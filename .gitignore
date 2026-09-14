@@ -21,4 +21,11 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Server output
+server/node_modules
+

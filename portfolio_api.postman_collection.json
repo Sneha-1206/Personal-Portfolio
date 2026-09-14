@@ -1,0 +1,184 @@
+{
+  "info": {
+    "_postman_id": "c1f7a9d2-3b8e-4a6f-921c-8e401b2a9e33",
+    "name": "NIT Warangal CS1303 Portfolio API Collection (Assignment 3)",
+    "description": "Postman Collection covering all 7 backend API requirements (B1-B7) for Assignment 3 - Backend Integration for the Portfolio Website.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "B1 - Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": [""]
+        },
+        "description": "Returns HTTP 200 with JSON status confirmation."
+      },
+      "response": []
+    },
+    {
+      "name": "B2 - GET All Projects",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/projects",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "projects"]
+        },
+        "description": "Returns HTTP 200 with a JSON array of all 6 project objects."
+      },
+      "response": []
+    },
+    {
+      "name": "B3 - GET Single Project (Success)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/projects/compiler-error-explainer",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "projects", "compiler-error-explainer"]
+        },
+        "description": "Valid ID returns HTTP 200 with matching project object."
+      },
+      "response": []
+    },
+    {
+      "name": "B3 - GET Single Project (Failure 404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/projects/non-existent-id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "projects", "non-existent-id"]
+        },
+        "description": "Non-existent ID returns HTTP 404 with JSON error body."
+      },
+      "response": []
+    },
+    {
+      "name": "B4 - POST Contact Submission (Success 201)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Sneha Priya Valeru\",\n  \"email\": \"snehapriyavaleru12@gmail.com\",\n  \"address\": \"NIT Warangal Campus, Telangana\",\n  \"message\": \"Hello, I am interested in collaborating on full stack development projects.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/contact",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "contact"]
+        },
+        "description": "Valid contact form submission returns HTTP 201 Created and persists submission."
+      },
+      "response": []
+    },
+    {
+      "name": "B4 - POST Contact Submission (Failure 400 - Missing Name)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"\",\n  \"email\": \"snehapriyavaleru12@gmail.com\",\n  \"address\": \"NIT Warangal\",\n  \"message\": \"Short test message for validation failure.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/contact",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "contact"]
+        },
+        "description": "Missing required field returns HTTP 400 with field-specific error."
+      },
+      "response": []
+    },
+    {
+      "name": "B4 - POST Contact Submission (Failure 400 - Invalid Email)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"invalid-email-format\",\n  \"address\": \"123 Main St\",\n  \"message\": \"Testing invalid email submission formatting.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/contact",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "contact"]
+        },
+        "description": "Invalid email format (missing '@') returns HTTP 400 with clear error."
+      },
+      "response": []
+    },
+    {
+      "name": "B5 - GET Contact Submissions (Verification)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/contact",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "contact"]
+        },
+        "description": "Returns HTTP 200 with JSON array of all stored contact submissions (Open endpoint)."
+      },
+      "response": []
+    },
+    {
+      "name": "B6 - Centralized 404 Route Handling",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/undefined-endpoint-route",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "undefined-endpoint-route"]
+        },
+        "description": "Undefined route returns HTTP 404 with JSON error body without server crashing."
+      },
+      "response": []
+    }
+  ]
+}

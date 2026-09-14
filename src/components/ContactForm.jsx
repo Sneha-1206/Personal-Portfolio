@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL || 'http://localhost:5000/api/contact';
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -10,7 +12,9 @@ export default function ContactForm() {
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [serverError, setServerError] = useState('');
   const successTimeoutRef = useRef(null);
 
   // Clean up any pending timeouts on unmount
@@ -22,7 +26,7 @@ export default function ContactForm() {
     };
   }, []);
 
-  // Validation side effect
+  // Client-side validation side effect
   useEffect(() => {
     const newErrors = {};
 
@@ -57,6 +61,7 @@ export default function ContactForm() {
       ...prev,
       [name]: value
     }));
+    setServerError('');
   };
 
   const handleBlur = (e) => {
@@ -67,14 +72,42 @@ export default function ContactForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setServerError('');
+    setIsSuccess(false);
     
-    // Check if there are any errors before submitting
-    if (Object.keys(errors).length === 0) {
+    // Check if client-side validation passes
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(CONTACT_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Server rejected submission (e.g. 400 validation error or 500 error)
+        let errorMsg = data.message || 'Failed to submit contact form.';
+        if (data.errors) {
+          const detailMsgs = Object.values(data.errors).join(', ');
+          errorMsg = `${errorMsg} (${detailMsgs})`;
+        }
+        setServerError(errorMsg);
+        return;
+      }
+
+      // Success
       setIsSuccess(true);
-      
-      // Reset the form values
       setFormData({
         name: '',
         email: '',
@@ -83,17 +116,22 @@ export default function ContactForm() {
       });
       setTouched({});
 
-      // Auto-hide success alert after 4 seconds
+      // Auto-hide success alert after 5 seconds
       if (successTimeoutRef.current) clearTimeout(successTimeoutRef.current);
       successTimeoutRef.current = setTimeout(() => {
         setIsSuccess(false);
-      }, 4000);
+      }, 5000);
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setServerError('Unable to reach backend server. Please check your internet or server connection.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  // Determine if submit should be disabled
+  // Determine if submit button should be disabled
   const hasEmptyFields = !formData.name || !formData.email || !formData.address || !formData.message;
-  const isSubmitDisabled = Object.keys(errors).length > 0 || hasEmptyFields;
+  const isSubmitDisabled = Object.keys(errors).length > 0 || hasEmptyFields || isSubmitting;
 
   return (
     <article className="contact-form">
@@ -101,7 +139,13 @@ export default function ContactForm() {
       
       {isSuccess && (
         <div className="form-success-alert" role="alert">
-          🎉 Thank you! Your message has been sent successfully.
+          🎉 Thank you! Your message has been sent successfully and saved to the backend database.
+        </div>
+      )}
+
+      {serverError && (
+        <div className="form-error-alert" role="alert">
+          ⚠️ {serverError}
         </div>
       )}
 
@@ -187,7 +231,7 @@ export default function ContactForm() {
           disabled={isSubmitDisabled}
           className={isSubmitDisabled ? 'btn-disabled' : ''}
         >
-          Send Message
+          {isSubmitting ? 'Sending Message...' : 'Send Message'}
         </button>
       </form>
     </article>
