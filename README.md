@@ -309,31 +309,7 @@ It includes pre-configured requests for all 9 API test cases (B1 through B6 succ
 
 ---
 
-## 9. Screen Recording Walkthrough Script (2–3 Minutes)
-
-When recording your demonstration video for submission, follow this simple step-by-step flow:
-
-1. **Step 1: Projects Page Remote Data Fetching (F1)**  
-   - Start both servers (`npm start` in `/server`, `npm run dev` in root).
-   - Open browser to `http://localhost:5173/projects`.
-   - Show all project cards rendering dynamically from the Express API (`GET /api/projects`).
-2. **Step 2: Project Detail Deep Link (F3)**  
-   - Click "Learn More" on a project or enter `http://localhost:5173/projects/compiler-error-explainer` in address bar and hit refresh.
-   - Show project details loading from `GET /api/projects/:id`.
-   - Enter `http://localhost:5173/projects/invalid-id` to demonstrate the clean 404 Project Not Found view.
-3. **Step 3: Contact Form Live Submission (F4 & B5)**  
-   - Navigate to `/contact`. Fill out name, email, address, and message.
-   - Click "Send Message". Show success banner.
-   - Open a browser tab to `http://localhost:5000/api/contact` to verify the submission appeared in the JSON array.
-4. **Step 4: Frontend Server Stop Error Handling (F2)**  
-   - In the backend terminal, press `Ctrl + C` to stop the Express server.
-   - Reload the Projects page on the frontend.
-   - Demonstrate the visible error alert ("Backend Server Unreachable").
-   - Restart the Express backend (`npm start`), click "Retry Connection" in the browser, and demonstrate seamless recovery!
-
----
-
-## 10. Repository File Structure
+## 9. Repository File Structure
 
 ```text
 Assignment_3_FSD/
@@ -370,3 +346,5 @@ Assignment_3_FSD/
     └── public/
         └── assets/
 ```
+## 10.Implementation (Screen Recording)
+`https://drive.google.com/file/d/19HNx5Z2vjQ-O5HvDHvXbU23CRmEZdxFR/view?usp=drive_link`

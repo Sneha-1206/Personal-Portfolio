@@ -54,5 +54,101 @@
     "address": "Hyderabad",
     "message": "Hello,I'm looking forward to know more",
     "submittedAt": "2026-09-14T13:14:59.797Z"
+  },
+  {
+    "id": "sub_1789396260552",
+    "name": "manu",
+    "email": "manu@gmail.com",
+    "address": "hanamkonda",
+    "message": "Hello.I wanna collab",
+    "submittedAt": "2026-09-14T14:31:00.552Z"
+  },
+  {
+    "id": "sub_1789399710532",
+    "name": "Sneha Priya Valeru",
+    "email": "snehapriyavaleru12@gmail.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T15:28:30.532Z"
+  },
+  {
+    "id": "sub_1789400696807",
+    "name": "Sneha Priya Valeru",
+    "email": "valerusnehapriya@gmail.com",
+    "address": "Guntur",
+    "message": "Hi,I would",
+    "submittedAt": "2026-09-14T15:44:56.807Z"
+  },
+  {
+    "id": "sub_1789401079968",
+    "name": "Sneha Priya Valeru",
+    "email": "snehapriyavaleru12@gmail.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T15:51:19.968Z"
+  },
+  {
+    "id": "sub_1789401501104",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T15:58:21.104Z"
+  },
+  {
+    "id": "sub_1789401516990",
+    "name": "Joh",
+    "email": "john@example.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T15:58:36.990Z"
+  },
+  {
+    "id": "sub_1789401547704",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T15:59:07.704Z"
+  },
+  {
+    "id": "sub_1789401681446",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T16:01:21.446Z"
+  },
+  {
+    "id": "sub_1789402011149",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T16:06:51.149Z"
+  },
+  {
+    "id": "sub_1789402030827",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T16:07:10.827Z"
+  },
+  {
+    "id": "sub_1789402113346",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T16:08:33.346Z"
+  },
+  {
+    "id": "sub_1789402152522",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "NIT Warangal Campus, Telangana",
+    "message": "Hello, I am interested in collaborating on full stack development projects.",
+    "submittedAt": "2026-09-14T16:09:12.522Z"
   }
 ]
